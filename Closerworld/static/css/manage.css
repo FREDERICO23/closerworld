@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: whitesmoke;
+}
+.topdiv{
+    margin-left: 250px;
+    width: 800px;
+}
+
+h1{
+    color: red;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+#topp{
+    font-family: sans-serif;
+    letter-spacing: 1.5px;
+    word-spacing: 1.5px;
+}
+.motherdiv1{
+    display: flex;
+    margin-top: 90px;
+}
+.motherdiv2{
+    display: flex;
+    margin-top: 90px;
+}
+.honestdiv{
+    width: 500px;
+    margin-left: 30px;
+}
+.teamdiv{
+    width: 500px;
+    margin-left: 20px;
+}
+.availablediv{
+    width: 500px;
+    margin-left: 20px;
+    margin-right: 30px;
+}
+#honestp{
+    margin-top: 10px;
+    word-spacing: 1.5px;
+    font-family: sans-serif;
+}
+#teamp{
+    margin-top: 10px;
+    word-spacing: 1.5px;
+    font-family: sans-serif;
+}
+#availablep{
+    margin-top: 10px;
+    word-spacing: 1.5px;
+    font-family: sans-serif;
+}
+span{
+    color: red;
+    text-decoration: bold;
+
+}
+.bardiv{
+    width: 500px;
+    margin-left: 20px;
+    margin-right: 30px;
+}
+.rewarddiv{
+    width: 500px;
+    margin-left: 20px;
+    margin-right: 30px;
+}
+#barp{
+    margin-top: 10px;
+    word-spacing: 1.5px;
+    font-family: sans-serif;
+}
+#rewardp{
+    margin-top: 10px;
+    word-spacing: 1.5px;
+    font-family: sans-serif;
+}
