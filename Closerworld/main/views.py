@@ -53,3 +53,18 @@ def login(request):
 	return render(request,
 					"main/login.html",
 					{"form": form})
+
+def about(request):
+    return render( request=request, template_name='about.html' )
+def growth(request):
+    return render(request, 'growth.html' )
+def manage(request):
+    return render(request, 'manage.html' )
+def skills(request):
+    return render(request, 'skills.html' )
+def tele(request):
+    return render(request, 'tele.html' )
+def site(request):
+    return render(request, 'site.html' )
+def work(request):
+    return render(request, 'work.html' )
