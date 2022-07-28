@@ -1,0 +1,40 @@
+*{
+    margin: 0px;
+    padding: 0px;
+  }
+  body{
+    background-image: url(./images/sale-banner.jpg);
+    background-size: auto;
+    background-repeat: repeat-x;
+  }
+  .motherdiv{
+      display: flex;
+  }
+  .logodiv{
+      width: 500px;
+      height: 500px;
+
+  }
+  .bodydiv{
+      width: 500px;
+      height: 500px;
+      margin-right: 50px;
+  }
+  .image{
+      margin-left: 40px;
+      margin-top: 100px;
+  }
+  h1{
+      color: green;
+      margin-top: 30px;
+      margin-left: 100px;
+      margin-bottom: 50px;
+      font: 30px;
+  }
+  p{
+      margin-left: 100px;
+      font-style: oblique;
+      font-family: sans-serif;
+      font: 20px;
+
+  }
