@@ -1,8 +1,11 @@
+from django.contrib.auth import get_user_model
 from django.shortcuts import render, redirect
 from django.contrib.auth import login,logout, authenticate
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from .forms import SignUpForm
+User = get_user_model()
 
 def homepage(request):
     return render(
@@ -12,7 +15,7 @@ def homepage(request):
     
 def register(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
             username = form.cleaned_data.get('username')
@@ -26,7 +29,7 @@ def register(request):
     form = UserCreationForm()
     return render(request= request,
 					template_name ='main/register.html',
-					context= {"form": form})
+					context= {"register_form": form})
 
 
 def logout(request):
@@ -52,7 +55,7 @@ def login(request):
 	form = AuthenticationForm()
 	return render(request,
 					"login.html",
-					{"form": form})
+					{"login_form": form})
 
 def about(request):
     return render( request=request, template_name='about.html' )

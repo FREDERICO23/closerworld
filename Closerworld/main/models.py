@@ -1,21 +1,46 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from phonenumber_field.modelfields import PhoneNumberField
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 
 from .managers import CustomUserManager
 
+class CustomUserManager(BaseUserManager):
+    
+    def create_user(self, username, email, first_name, password, **other_fields):
+        if not email:
+            raise ValueError(_('You must provide an Email Address'))
+
+        email=self.normalize_email(email)
+        user = self.model(username=username, email=email,first_name=first_name, **other_fields)
+        user.set_password(password)
+        user.save()
+        return user
+
+    def create_superuser(self, username, email, first_name, password, **other_fields):
+        
+        other_fields.setdefault('is_staff', True)
+        other_fields.setdefault('is_superuser', True)
+        other_fields.setdefault('is_active', True)
+        
+        if other_fields.get('is_staff')is not True:
+            raise ValueError('superuser must be set to is_staff=True')
+        
+        if other_fields.get('is_superuser')is not True:
+            raise ValueError('superuser must be set to is_superuser=True')
+
+
+        user = self.create_user(username, email, first_name, password, **other_fields)
+        
+        return user
 
 class User(AbstractBaseUser, PermissionsMixin):
-    username = models.CharField(max_length=30, null=False, blank=False)
-    email = models.EmailField(_('email address'), unique=True, max_length=200, null=False, blank=False)
-    age = models.IntegerField()
-    class Gender(models.TextChoices):
-        male = 'M', 'Male'
-        female = 'F', 'Female'
-        transgender = 'T', 'Transgender'
-    gender = models.CharField(max_length= 2, choices=Gender.choices)
+    username = models.CharField(max_length=30, unique=True)
+    email = models.EmailField(_('email address'), unique=True)
+    first_name =  models.CharField(max_length=200, blank=True)
+    age = models.CharField(max_length=3, blank=True)
+    gender = models.CharField(max_length= 10)
     phone = PhoneNumberField(null=False, blank=False)
     business = models.CharField(max_length=200)
     is_staff = models.BooleanField(default=False)
@@ -23,9 +48,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(default=timezone.now)
     
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['username','first_name']
     
     objects = CustomUserManager()
 
     def __str__(self):
-        return self.email
+        return self.username
