@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    "phonenumber_field",
+
 ]
 
 MIDDLEWARE = [
@@ -115,3 +117,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT = 'homepage'
 LOGOUT_REDIRECT = 'homepage'
+
+AUTH_USER_MODEL = 'main.User'

@@ -1,0 +1,12 @@
+{% extends "access.html" %}
+
+{% block content %}
+  <form method="POST">
+ 	{% csrf_token %}
+ 	{{login_form}}
+
+ 	<button class="btn" style="background-color: green; text-decoration-color: white" type="submit">login</button>
+  </form>
+
+ Don't have an account? Click here to <a href="/register">REGISTER</a>
+{% endblock %}
